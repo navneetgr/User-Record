@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #253042;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-content {
+  background-color: #000031;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a.active {
+  color: #ffffff;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  max-width: 30px;
+}
