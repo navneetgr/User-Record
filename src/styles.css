@@ -5,7 +5,7 @@ body {
 }
 
 .main-content {
-  background-color: #000031;
+  background-image: url('./assets/images/texture.png');
 }
 
 a {
