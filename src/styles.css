@@ -27,3 +27,24 @@ a.active {
   width: 100%;
   max-width: 30px;
 }
+
+.registration-block {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: rgba(34, 34, 34, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(139, 139, 139, 1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(139, 139, 139, 1);
+  box-shadow: 0px 0px 10px 0px rgba(139, 139, 139, 1);
+}
+
+.registration-block .submit-btn {
+  margin: 0 auto;
+}
+
+.help-block {
+  color: #ff0000;
+  font-size: 13px;
+  font-style: italic;
+}

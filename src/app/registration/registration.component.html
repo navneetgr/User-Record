@@ -1,3 +1,93 @@
-<p>
-  registration works!
-</p>
+<div class="container login-container">
+  <div class="registration-block">
+    <form [formGroup]="registrationFormGroup" (ngSubmit)="onSignFormSubmit(registrationFormGroup.value)">
+      <div class="row">
+        <div class="col-6 form-group">
+          <label for="fName">First Name:</label>
+          <input type="text" class="form-control" id="fName" placeholder="First Name" formControlName="fName">
+          <span class="help-block" *ngIf="isValidField(registrationFormGroup,'fName',submitted)">
+            <span *ngIf="registrationFormGroup.controls.fName.hasError('required')">
+              First name is required.
+            </span>
+          </span>
+        </div>
+        <div class="col-6 form-group">
+          <label for="lName">Last Name:</label>
+          <input type="text" class="form-control" placeholder="Last Name" formControlName="lName">
+          <span class="help-block" *ngIf="isValidField(registrationFormGroup,'lName',submitted)">
+            <span *ngIf="registrationFormGroup.controls.lName.hasError('required')">
+              Last name is required.
+            </span>
+          </span>
+        </div>
+        <div class="col-6 form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
+          <span class="help-block" *ngIf="isValidField(registrationFormGroup,'email',submitted)">
+            <span *ngIf="registrationFormGroup.controls.email.hasError('required')">
+              Email is required.
+            </span>
+            <span *ngIf="registrationFormGroup.controls.email.hasError('email')">
+              Enter valid email address.
+            </span>
+          </span>
+        </div>
+        <div class="col-6 form-group">
+          <label for="pwd">Date of Birth:</label>
+          <input type="text" placeholder="Date of Birth" class="form-control" formControlName="dateOfBirth"
+            bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" [ngClass]="{'is-invalid': isValidField(registrationFormGroup,'dateOfBirth',submitted)}">
+            <span class="help-block" *ngIf="isValidField(registrationFormGroup,'dateOfBirth',submitted)">
+              <span *ngIf="registrationFormGroup.controls.dateOfBirth.hasError('required')">
+                Date of birth is required.
+              </span>
+            </span>
+        </div>
+        <div class="col-6 form-group">
+          <label for="pwd">Gender:</label><br />
+          <input type="radio" class="mr-1" id="male" value="male" formControlName="gender">
+          <label for="male"> Male</label>
+          <input type="radio" class="ml-3 mr-1" id="female" value="female" formControlName="gender">
+          <label for="female"> Female</label>
+          <div class="help-block" *ngIf="isValidField(registrationFormGroup,'gender',submitted)">
+            <div *ngIf="registrationFormGroup.controls.gender.hasError('required')">
+              Gender is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6 form-group">
+          <label for="pwd">Mobile:</label>
+          <input type="text" class="form-control" placeholder="Enter Mobile" formControlName="mobile">
+          <div class="help-block" *ngIf="isValidField(registrationFormGroup,'mobile',submitted)">
+            <div *ngIf="registrationFormGroup.controls.mobile.hasError('pattern')">
+              Mobile number must be numeric.
+            </div>
+          </div>
+        </div>
+        <div class="col-6 form-group">
+          <label for="pwd">City:</label>
+          <input type="text" class="form-control" placeholder="Enter City" formControlName="city">
+          <div class="help-block" *ngIf="isValidField(registrationFormGroup,'city',submitted)">
+            <div *ngIf="registrationFormGroup.controls.city.hasError('required')">
+              City is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6 form-group">
+          <label for="pwd">Address:</label>
+          <textarea class="form-control" placeholder="Enter Address" formControlName="address"></textarea>
+          <div class="help-block" *ngIf="isValidField(registrationFormGroup,'address',submitted)">
+            <div *ngIf="registrationFormGroup.controls.address.hasError('required')">
+              Address is required.
+            </div>
+          </div>
+        </div>
+        <div class="submit-btn">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div class="registration-result" [ngStyle]="{'color':registration_result ? 'green':'red'}">{{registration_msg}}
+      <a *ngIf="registration_result" routerLink="/login">login</a>
+    </div>
+  </div>
+</div>
