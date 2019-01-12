@@ -1,0 +1,1 @@
+var Registration = require('./db/models/registration');
