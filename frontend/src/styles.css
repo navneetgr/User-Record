@@ -48,3 +48,19 @@ a.active {
   font-size: 13px;
   font-style: italic;
 }
+
+.table-block {
+  color: #ffffff;
+  background-color: #333333;
+  padding: 10px 10px 20px;
+  font-size: 14px;
+}
+
+.table-block * {
+  background-color: #333333;
+  color: #ffffff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+  color: #ffffff !important;
+}

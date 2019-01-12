@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  dtOptions: DataTables.Settings = {};
+
+  constructor(
+    private appService: AppService
+  ) { }
 
   ngOnInit() {
+    this.dtOptions = {
+      ajax: this.appService.userDataUrl,
+      columns: [{
+        title: 'ID',
+        data: '_id'
+      }, {
+        title: 'First name',
+        data: 'fname'
+      }, {
+        title: 'Last name',
+        data: 'lname'
+      }]
+    };
   }
-
 }

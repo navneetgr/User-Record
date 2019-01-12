@@ -7,7 +7,8 @@ import { environment } from '../environments/environment';
 })
 export class AppService {
 
-  registrationUrl = environment.serviceUrl + "/api/registration";
+  registrationUrl = environment.serviceUrl + "/api/user";
+  userDataUrl = environment.serviceUrl + "/api/user";
 
   constructor(
     private http: HttpClient

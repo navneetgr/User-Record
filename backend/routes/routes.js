@@ -36,7 +36,10 @@ router.get('/user', function (req, res) {
   Registration.find(function (err, registration) {
     if (err)
       res.send(err);
-    res.json(registration);
+    data = {
+      "data":registration
+    }
+    res.json(data);
   });
 });
 
