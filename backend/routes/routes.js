@@ -1,5 +1,5 @@
-var express = require('express')
-var Registration = require('../db/models/registration');
+var express = require('express');
+var user = require('./controllers/user.controller');
 var router = express.Router();
 
 router.use(function (req, res, next) {
@@ -10,38 +10,10 @@ router.use(function (req, res, next) {
   next();
 });
 
-router.get('/', function (req, res) {
-  res.json({ message: 'welcome' });
-});
-
-router.post('/user', function (req, res) {
-  console.log("hello", req.body);
-  var regis = new Registration();
-  regis.fname = req.body.fName;
-  regis.lname = req.body.lName;
-  regis.email = req.body.email;
-  regis.dob = req.body.dateOfBirth;
-  regis.gender = req.body.gender;
-  regis.mobile = req.body.mobile;
-  regis.city = req.body.city;
-  regis.address = req.body.address;
-  regis.save(function (err) {
-    if (err)
-      res.send(err);
-    res.json({ message: req.body });
-  });
-});
-
-router.get('/user', function (req, res) {
-  Registration.find(function (err, registration) {
-    if (err)
-      res.send(err);
-    data = {
-      "data":registration
-    }
-    res.json(data);
-  });
-});
+router.get('/', user.welcome);
+router.post('/user-register', user.addUser);
+router.get('/user-details', user.getUser);
+router.post('/user-delete', user.deleteUser);
 
 
 module.exports = router

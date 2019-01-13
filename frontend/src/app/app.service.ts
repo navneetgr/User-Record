@@ -7,8 +7,9 @@ import { environment } from '../environments/environment';
 })
 export class AppService {
 
-  registrationUrl = environment.serviceUrl + "/api/user";
-  userDataUrl = environment.serviceUrl + "/api/user";
+  registrationUrl = environment.serviceUrl + "/api/user-register";
+  userDataUrl = environment.serviceUrl + "/api/user-details";
+  userDeleteUrl = environment.serviceUrl + "/api/user-delete";
 
   constructor(
     private http: HttpClient
@@ -20,6 +21,13 @@ export class AppService {
   }
 
   registration(form) {
-    return this.http.post(this.registrationUrl, form, { headers: this.getAuthorizationHeader()});
+    return this.http.post(this.registrationUrl, form, { headers: this.getAuthorizationHeader() });
+  }
+
+  deleteUser(userid) {
+    let data = {
+      id: userid
+    }
+    return this.http.post(this.userDeleteUrl, data, { headers: this.getAuthorizationHeader() });
   }
 }
