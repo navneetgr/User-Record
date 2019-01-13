@@ -9,6 +9,9 @@
             <span *ngIf="registrationFormGroup.controls.fName.hasError('required')">
               First name is required.
             </span>
+            <span *ngIf="registrationFormGroup.controls.fName.hasError('pattern')">
+              First name must be a characters.
+            </span>
           </span>
         </div>
         <div class="col-6 form-group">
@@ -17,6 +20,9 @@
           <span class="help-block" *ngIf="isValidField(registrationFormGroup,'lName',submitted)">
             <span *ngIf="registrationFormGroup.controls.lName.hasError('required')">
               Last name is required.
+            </span>
+            <span *ngIf="registrationFormGroup.controls.lName.hasError('pattern')">
+              Last name must be a characters.
             </span>
           </span>
         </div>
@@ -29,6 +35,9 @@
             </span>
             <span *ngIf="registrationFormGroup.controls.email.hasError('email')">
               Enter valid email address.
+            </span>
+            <span *ngIf="registrationFormGroup.controls.email.hasError('maxLength')">
+              Email address is too long.
             </span>
           </span>
         </div>
@@ -48,29 +57,35 @@
           <label for="male"> Male</label>
           <input type="radio" class="ml-3 mr-1" id="female" value="female" formControlName="gender">
           <label for="female"> Female</label>
-          <div class="help-block" *ngIf="isValidField(registrationFormGroup,'gender',submitted)">
-            <div *ngIf="registrationFormGroup.controls.gender.hasError('required')">
+          <span class="help-block" *ngIf="isValidField(registrationFormGroup,'gender',submitted)">
+            <span *ngIf="registrationFormGroup.controls.gender.hasError('required')">
               Gender is required.
-            </div>
-          </div>
+            </span>
+          </span>
         </div>
         <div class="col-6 form-group">
           <label for="pwd">Mobile:</label>
           <input type="text" class="form-control" placeholder="Enter Mobile" formControlName="mobile">
-          <div class="help-block" *ngIf="isValidField(registrationFormGroup,'mobile',submitted)">
-            <div *ngIf="registrationFormGroup.controls.mobile.hasError('pattern')">
+          <span class="help-block" *ngIf="isValidField(registrationFormGroup,'mobile',submitted)">
+            <span *ngIf="registrationFormGroup.controls.mobile.hasError('pattern')">
               Mobile number must be numeric.
-            </div>
-          </div>
+            </span>
+            <span *ngIf="!registrationFormGroup.controls.mobile.hasError('maxLength') || !registrationFormGroup.controls.mobile.hasError('minLength')">
+              Mobile number must 10 digits number.
+            </span>
+          </span>
         </div>
         <div class="col-6 form-group">
           <label for="pwd">City:</label>
           <input type="text" class="form-control" placeholder="Enter City" formControlName="city">
-          <div class="help-block" *ngIf="isValidField(registrationFormGroup,'city',submitted)">
-            <div *ngIf="registrationFormGroup.controls.city.hasError('required')">
+          <span class="help-block" *ngIf="isValidField(registrationFormGroup,'city',submitted)">
+            <span *ngIf="registrationFormGroup.controls.city.hasError('required')">
               City is required.
-            </div>
-          </div>
+            </span>
+            <span *ngIf="registrationFormGroup.controls.city.hasError('pattern')">
+              City must be a characters.
+            </span>
+          </span>
         </div>
         <div class="col-6 form-group">
           <label for="pwd">Address:</label>
@@ -79,6 +94,9 @@
             <div *ngIf="registrationFormGroup.controls.address.hasError('required')">
               Address is required.
             </div>
+            <span *ngIf="!registrationFormGroup.controls.address.hasError('maxLength')">
+              Address is too long.
+            </span>
           </div>
         </div>
         <div class="submit-btn">

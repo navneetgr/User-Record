@@ -36,7 +36,7 @@ export class RegistrationComponent implements OnInit {
       email: [null, [Validators.required, Validators.email, Validators.maxLength(30)]],
       dateOfBirth: [null, [Validators.required]],
       gender: [null, [Validators.required]],
-      mobile: [null, [Validators.required, Validators.pattern(AppConstant.NUMBER_PATTERN), Validators.minLength(10), Validators.maxLength(10)]],
+      mobile: [null, [Validators.pattern(AppConstant.NUMBER_PATTERN), Validators.minLength(10), Validators.maxLength(10)]],
       city: [null, [Validators.required, Validators.pattern(AppConstant.ALPHA_PATTERN), Validators.maxLength(30)]],
       address: [null, [Validators.required, Validators.maxLength(250)]],
     });
@@ -63,11 +63,9 @@ export class RegistrationComponent implements OnInit {
       if (res['message'] == "success") {
         this.registration_result = true;
         this.registration_msg = this.message.success;
-        console.log("hhell0", this.message.success);
       } else {
         this.registration_result = false;
         this.registration_msg = this.message.error;
-        console.log("hhell0", this.message.error);
       }
     });
   }

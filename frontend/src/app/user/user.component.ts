@@ -100,7 +100,6 @@ export class UserComponent implements AfterViewInit, OnDestroy, OnInit {
   rerender() {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.destroy();
-      debugger;
       this.dtTrigger.next();
       this.index = 0;
     });
