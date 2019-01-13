@@ -45,18 +45,18 @@
           <label for="pwd">Date of Birth:</label>
           <input type="text" placeholder="Date of Birth" class="form-control" formControlName="dateOfBirth"
             bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" [ngClass]="{'is-invalid': isValidField(registrationFormGroup,'dateOfBirth',submitted)}">
-            <span class="help-block" *ngIf="isValidField(registrationFormGroup,'dateOfBirth',submitted)">
-              <span *ngIf="registrationFormGroup.controls.dateOfBirth.hasError('required')">
-                Date of birth is required.
-              </span>
+          <span class="help-block" *ngIf="isValidField(registrationFormGroup,'dateOfBirth',submitted)">
+            <span *ngIf="registrationFormGroup.controls.dateOfBirth.hasError('required')">
+              Date of birth is required.
             </span>
+          </span>
         </div>
         <div class="col-6 form-group">
           <label for="pwd">Gender:</label><br />
           <input type="radio" class="mr-1" id="male" value="male" formControlName="gender">
           <label for="male"> Male</label>
           <input type="radio" class="ml-3 mr-1" id="female" value="female" formControlName="gender">
-          <label for="female"> Female</label>
+          <label for="female"> Female</label><br/>
           <span class="help-block" *ngIf="isValidField(registrationFormGroup,'gender',submitted)">
             <span *ngIf="registrationFormGroup.controls.gender.hasError('required')">
               Gender is required.
@@ -104,8 +104,8 @@
         </div>
       </div>
     </form>
-    <div class="registration-result" [ngStyle]="{'color':registration_result ? 'green':'red'}">{{registration_msg}}
-      <a *ngIf="registration_result" routerLink="/login">login</a>
+    <div class="registration-result text-center" [ngStyle]="{'color':registration_result ? 'green':'red'}">
+      {{registration_msg}}
     </div>
   </div>
 </div>

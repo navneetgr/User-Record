@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service'
 import { AppConstant } from '../app.constant'
+import {Router} from "@angular/router";
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -22,7 +23,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -60,9 +62,11 @@ export class RegistrationComponent implements OnInit {
     }
     this.data = this.appService.registration(registrationFormData);
     this.data.subscribe(res => {
+      this.registrationFormGroup.reset();
       if (res['message'] == "success") {
         this.registration_result = true;
         this.registration_msg = this.message.success;
+        this.router.navigateByUrl('/user-list');
       } else {
         this.registration_result = false;
         this.registration_msg = this.message.error;

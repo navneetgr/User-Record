@@ -16,8 +16,8 @@ exports.addUser = function (req, res) {
   regis.address = req.body.address;
   regis.save(function (err) {
     if (err)
-      res.send(err);
-    res.json({ message: req.body });
+      res.send({message: 'error'});
+    res.json({ message: 'success' });
   });
 };
 
