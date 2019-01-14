@@ -4,12 +4,12 @@ exports.welcome = function (req, res) {
   res.json({ message: 'welcome' });
 };
 
-exports.addUser = function (req, res) {
+exports.addUser = async (req, res, next) => {
   var regis = new Registration();
-  regis.fname = req.body.fName;
-  regis.lname = req.body.lName;
+  regis.fname = req.body.fname;
+  regis.lname = req.body.lname;
   regis.email = req.body.email;
-  regis.dob = req.body.dateOfBirth;
+  regis.dob = req.body.dob;
   regis.gender = req.body.gender;
   regis.mobile = req.body.mobile;
   regis.city = req.body.city;
@@ -21,7 +21,7 @@ exports.addUser = function (req, res) {
   });
 };
 
-exports.getUser = function (req, res) {
+exports.getUser = async (req, res, next) => {
   Registration.find(function (err, registration) {
     if (err)
       res.send(err);
@@ -32,7 +32,7 @@ exports.getUser = function (req, res) {
   });
 };
 
-exports.deleteUser = function (req, res) {
+exports.deleteUser = async (req, res, next) => {
   Registration.findByIdAndRemove({ _id: req.body.id }, function (err, cb) {
     if (err)
       res.json(err);

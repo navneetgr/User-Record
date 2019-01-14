@@ -13,5 +13,18 @@ module.exports = {
       req.value['body'] = result.value;
       next();
     }
+  },
+
+  schemas: {
+    authSchema: Joi.object().keys({
+      fname: Joi.string().required(),
+      lname: Joi.string().required(),
+      email: Joi.string().email().required(),
+      dob: Joi.date().required(),
+      gender: Joi.string().required(),
+      mobile: Joi.number(),
+      city: Joi.string().required(),
+      address: Joi.string().required()
+    })
   }
 }
