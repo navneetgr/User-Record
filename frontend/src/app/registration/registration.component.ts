@@ -33,10 +33,10 @@ export class RegistrationComponent implements OnInit {
 
   initRegistrationForm() {
     this.registrationFormGroup = this.formBuilder.group({
-      fName: [null, [Validators.required, Validators.pattern(AppConstant.ALPHA_PATTERN), Validators.maxLength(30)]],
-      lName: [null, [Validators.required, Validators.pattern(AppConstant.ALPHA_PATTERN), Validators.maxLength(30)]],
+      fname: [null, [Validators.required, Validators.pattern(AppConstant.ALPHA_PATTERN), Validators.maxLength(30)]],
+      lname: [null, [Validators.required, Validators.pattern(AppConstant.ALPHA_PATTERN), Validators.maxLength(30)]],
       email: [null, [Validators.required, Validators.email, Validators.maxLength(30)]],
-      dateOfBirth: [null, [Validators.required]],
+      dob: [null, [Validators.required]],
       gender: [null, [Validators.required]],
       mobile: [null, [Validators.pattern(AppConstant.NUMBER_PATTERN), Validators.minLength(10), Validators.maxLength(10)]],
       city: [null, [Validators.required, Validators.pattern(AppConstant.ALPHA_PATTERN), Validators.maxLength(30)]],
